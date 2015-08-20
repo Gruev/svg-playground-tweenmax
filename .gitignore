@@ -1,0 +1,8 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+
+# exclude everything except directory
+/node_modules/*

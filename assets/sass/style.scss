@@ -1,0 +1,130 @@
+@import "_mixins.scss";
+
+// FONTS
+@include font-face('ProximaNova Reg', 'proximanova-reg-webfont');
+@include font-face('ProximaNova Semibol', 'proxima_nova_semibold-webfont');
+@include font-face('ProximaNova Bold', 'proximanova-bold-webfont');
+
+$f-pn-reg: 'ProximaNova Reg';
+$f-pn-semib: 'ProximaNova Semibol';
+$f-pn-bold: 'ProximaNova Bold';
+
+// Retina sprite
+@import 'sprites.scss';
+
+@import "base/_index.scss";
+@import "UI/_index.scss";
+
+// Magnific Popup - https://github.com/dimsemenov/Magnific-Popup
+@import "_mp-settings.scss";
+@import "_mp-main.scss";
+
+body {
+  // background-color: #ddd;
+  font: 1em $f-pn-semib, Tahoma, Arial, sans-serif;
+}
+
+//////////////////////////////////////////
+//                                      //
+//            MAIN SETTING              //
+//                                      //
+//////////////////////////////////////////
+
+.container {
+  max-width: 1000px;
+  margin: 2em auto;
+}
+
+.row:after {
+  display: table;
+  content: '';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.grid, .m-grid {
+  float: left;
+}
+
+[class*="m-box"] {
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@include grid(100%, 4%, true, 12);
+@include grid(100%, 4%, false, 12);
+
+.disable-hover {
+  pointer-events: none;
+}
+
+.placeholder {
+  line-height: 1.2;
+}
+
+//////////////////////////////////////////
+//                                      //
+//                 FOO                  //
+//                                      //
+//////////////////////////////////////////
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+.wrap-svg {
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+
+.field {
+  position: relative;
+  width: 100%; height: 100%;
+  //width: 100%; height: 100%;
+  //background-color: #61B961;
+}
+
+// #point {
+//   border-radius: 50%;
+//   position: absolute;
+//   width: 30px; height: 30px;
+//   display: block;
+//   transform: translate(-50%,-50%);
+//   background-color: #fff;
+// }
+
+// .click {
+//   border-radius: 50%;
+//   position: absolute;
+//   width: 20px; height: 20px;
+//   display: block;
+//   transform: translate(-50%,-50%);
+//   background-color: #fff;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

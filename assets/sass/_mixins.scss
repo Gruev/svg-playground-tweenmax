@@ -1,0 +1,145 @@
+// Font-face
+
+@mixin font-face($font-name, $file-name, $path: '../fonts/', $weight: normal, $style: normal) {
+	@font-face {
+	  font-family: quote($font-name);
+	  src: url( $path + $file-name + '.eot'); /* IE9 Compat Modes */
+	  src: url( $path + $file-name + '.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url( $path + $file-name + '.woff') format('woff'), /* Modern Browsers */
+		url( $path + $file-name + '.ttf')  format('truetype'), /* Safari, Android, iOS */
+		url( $path + $file-name + '.svg##{' + $file-name + '}') format('svg'); /* Legacy iOS */
+		font-weight: $weight;
+		font-style: $style;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+// Centered element
+
+@mixin el-center {
+	position: absolute;
+	left: 50%; right: 50%;
+	transform: transform(-50%, -50%);
+}
+
+// ex clearfix
+
+@mixin clearfix() {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+.clearfix {
+	&:before, &:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Pseudo
+
+@mixin pseudo($content:'') {
+	content: $content;
+}
+
+// Hardware-acceleration
+// Use @extend %ha;
+
+%ha {
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000;
+}
+
+
+
+// BUTTON
+
+// $colors: (
+// 	"red": #f10,
+// 	"yellow": #ff1,
+// 	"blue": #12f
+// );
+
+// .btn {
+// 	min-width: 120px;
+// 	@each $name, $color in $colors {
+// 		&-#{$name} {
+// 			background: $color;
+// 			background: url('assets/img/#{$name}-bg.jpg');
+// 		}
+// 	}
+// }
+
+// Exemple how to use
+//____________________
+// .social-twitter {
+// 	@extend .btn, btn-blue;
+// }
+
+// GRID
+
+@mixin grid(
+	$width: 960px,
+	$gutter: 0,
+	$margin: true,
+	$columns: 12
+) {
+	@if $margin == true {
+		.m-grid {
+			margin-right: $gutter;
+		}
+		$column_width: ($width + $gutter)/$columns;
+		@for $i from 1 through $columns {
+			.m-box-#{$i} {
+				@extend .m-grid;
+				width: $i * $column_width - $gutter;
+			}
+		}
+	} @else {
+		$column_width: $width/$columns;
+		@for $i from 1 through $columns {
+			.box-#{$i} {
+				@extend .grid;
+				width: $i * $column_width;
+			}
+		}
+	}
+}
+
+// GRADIENT
+
+@mixin gr($color-start, $color-stop, $pers-start: 0, $pers-stop: 100%, $dir: "bottom", $img: false) {
+	@if $img != false {
+		background: $img, -moz-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: $img, -webkit-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: $img, -o-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: $img, -ms-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		@if $dir == "bottom" {
+			background: $img, linear-gradient(to top, $color-start $pers-start, $color-stop $pers-stop);
+		} @else {
+			background: $img, linear-gradient(to bottom, $color-start $pers-start, $color-stop $pers-stop);
+		}
+	} @else {
+		background: -moz-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: -webkit-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: -o-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		background: -ms-linear-gradient($dir, $color-start $pers-start, $color-stop $pers-stop);
+		@if $dir == "bottom" {
+			background: linear-gradient(to top, $color-start $pers-start, $color-stop $pers-stop);
+		} @else {
+			background: linear-gradient(to bottom, $color-start $pers-start, $color-stop $pers-stop);
+		}
+	}
+}

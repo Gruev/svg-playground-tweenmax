@@ -1,0 +1,97 @@
+/* FORM
+_______________________________________________________________________*/
+
+$c-red: #f44e4f;
+$ph-color: #98CFCF;
+
+textarea,
+input {
+	border: 1px solid transparent;
+	padding: 7px 11px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	&::-webkit-input-placeholder {
+		color: $ph-color;
+		line-height: 1.5;
+	}
+	&::-moz-placeholder {
+		color: $ph-color;
+		line-height: 1.2;
+	}
+	&:-ms-input-placeholder {
+		color: $ph-color;
+		line-height: 1.25;
+	}
+}
+
+input[type="tel"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"] {
+	line-height: 1.4;
+	margin-bottom: 20px;
+	&::-ms-clear {
+		display: none;
+	}
+}
+
+input[type=search] {
+	-webkit-appearance: none;
+	&::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+	}
+}
+
+input[type=email]:invalid {
+	border: 1px solid #FF5200;
+	box-shadow: none;
+}
+
+input[type=tel]:invalid {
+	border: 1px solid #FF5200;
+	box-shadow: none;
+}
+
+input[type=search] {
+	-webkit-appearance: none;
+	&::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+	}
+}
+
+textarea {
+	line-height: 1.4;
+	width: 100%;
+	resize: none;
+}
+
+/* BUTTONS
+_______________________________________________________________________*/
+
+.btn-red {
+	//background: $c-btn-main;
+	&:hover {
+		//background: adjust-lightness($c-btn-main, 1%);
+	}
+	&:active {
+		//background: adjust-lightness($c-btn-main, -2%);
+	}
+}
+
+
+.has-error {
+	border: 1px solid $c-red;
+}
+
+.has-success {
+	border: 1px solid rgba(255,255,255, 0.7);
+}
+
+button:disabled {
+	background-color: #d8d8d8;
+	&:hover {
+		background-color: #d8d8d8;
+	}
+}
