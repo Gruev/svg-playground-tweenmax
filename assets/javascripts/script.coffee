@@ -1,12 +1,19 @@
 $ ->
 
   filed = $ '.field'
+  logo = $ '.logo'
+  cs = $ '.circle-scene'
+  text = $ '.text'
   win = $ window
   pointsFiled = $ '#points'
-  colorsArr = ['#2980b9','#f1c40f','#2c3e50','#1abc9c','#bdc3c7', '#e74c3c']
+  colorsArr = ['#42a5f5','#ffee58','#b388ff','#fff','#4068BF','#ffd54f']
 
   class Point
     constructor: (@x, @y) ->
+
+    init: ->
+      @initScene()
+      @listeners()
 
     listeners: ->
       filed.on 'mousemove', (e) =>
@@ -17,11 +24,42 @@ $ ->
 
       @getCenterField()
 
+    initScene: ->
+      TweenMax.set(cs, {
+        scale: 0
+        transformOrigin:"center center"
+      })
+      TweenMax.set(text, {
+        scale: 0
+        transformOrigin:"center center"
+      })
+
+      hideScene = ->
+        logo.fadeOut 400, ->
+          @.remove()
+
+      scene = new TimelineLite()
+      scene.delay(.5)
+      scene
+        .staggerTo( cs, .8, {
+          scale: 1
+          ease: Quart.easeOut
+        }, 0.1)
+        .staggerTo(cs, 1, {
+          scale: 8
+          opacity: 0
+          ease: Quart.easeOut
+        }, 0.1)
+        .to(text, .7, {
+          scale: 1
+          ease: Bounce.easeOut
+          onComplete: hideScene
+        })
     getCenterField: ->
       w = filed.innerWidth()
       h = filed.innerHeight()
 
-      TweenMax.set('svg', {
+      TweenMax.set(filed, {
         attr: {
           viewBox: "0 0 #{w} #{h}"
         }
@@ -74,4 +112,4 @@ $ ->
       arr[rc]
   
   points = new Point
-  points.listeners()
+  points.init()
