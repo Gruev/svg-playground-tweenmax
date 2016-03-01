@@ -16,7 +16,7 @@ var gulp          = require('gulp'),
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
   browserSync.init({ server: "./" });
-  gulp.watch("assets/sass/*.scss", ['sass']);
+  gulp.watch("assets/sass/**/*.scss", ['sass']);
   gulp.watch("assets/javascripts/*.js", ['scripts']);
   gulp.watch("assets/javascripts/*.coffee", ['coffee']);
   gulp.watch("assets/images/sprite-img/*.png", ['sprite-img']);
@@ -26,7 +26,7 @@ gulp.task('serve', ['sass'], function() {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
-  gulp.src('assets/sass/*.scss')
+  gulp.src('assets/sass/**/*.scss')
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer({
     browsers: ['last 2 versions', 'ie 9'],

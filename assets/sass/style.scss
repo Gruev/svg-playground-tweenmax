@@ -92,9 +92,18 @@ body, html {
 }
 
 
-
-
-
+.rerere {
+  color: #fff;
+  @include mq(false, min-s, $single: true) {
+    background-color: magenta;
+  }
+  @include mq(min-s, max-s, $single: false) {
+    background-color: yellow;
+  }
+  @include mq(min-m, false, $single: true) {
+    background-color: green;
+  }
+}
 
 
 
