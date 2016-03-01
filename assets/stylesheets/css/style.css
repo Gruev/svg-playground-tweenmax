@@ -895,12 +895,3 @@ body, html {
   @media (min-width: 1000px) {
     .rerere {
       background-color: green; } }
-
-.elem {
-  position: absolute;
-  left: 2%;
-  top: 2%;
-  width: 40px;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 50%; }
