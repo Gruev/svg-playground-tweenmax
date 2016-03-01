@@ -883,3 +883,15 @@ body, html {
 .field {
   width: 100%;
   height: 100%; }
+
+.rerere {
+  color: #fff; }
+  @media (max-width: 768px) {
+    .rerere {
+      background-color: magenta; } }
+  @media (min-width: 768px) and (max-width: 999px) {
+    .rerere {
+      background-color: yellow; } }
+  @media (min-width: 1000px) {
+    .rerere {
+      background-color: green; } }
